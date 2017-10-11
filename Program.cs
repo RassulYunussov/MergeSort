@@ -26,10 +26,10 @@ namespace ms
                     else
                         buff[k++]=src[leftSide+j++];
                 }
-                while(i<mid)
-                    buff[k++]=src[left+i++];
-                while(j<rightSide)
-                    buff[k++]=src[leftSide+j++];
+                if(i<mid)
+                    Buffer.BlockCopy(src,(left+i)*sizeof(int),buff,k*sizeof(int),(mid-i)*sizeof(int));
+                if(j<rightSide)
+                    Buffer.BlockCopy(src,(leftSide+j)*sizeof(int),buff,k*sizeof(int),(rightSide-j)*sizeof(int));
                 Buffer.BlockCopy(buff,0,src,left*sizeof(int),(length)*sizeof(int));
             }
         }
